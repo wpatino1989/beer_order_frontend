@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Project with Docker Compose
 
-## Getting Started
+This is a [Next.js](https://nextjs.org/) project configured to run using Docker Compose.
 
-First, run the development server:
+## Getting Started with Docker Compose
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Follow these steps to get your Next.js project up and running with Docker Compose:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Docker
+- Docker Compose
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Instalación
 
-## Learn More
+1. Construye la imagen Docker:
 
-To learn more about Next.js, take a look at the following resources:
+    ```sh
+    docker-compose build
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Ejecuta la aplicación:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```sh
+    docker-compose up
+    ```
 
-## Deploy on Vercel
+   La aplicación estará disponible en `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ## Ejecutar los test
+   
+   1. ejecutar el comando 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```sh
+    npm test
+    ```
+   
+
+
+## Estructura
+
+/frontend
+├── /public
+│   └── (archivos estáticos, como imágenes)
+├── /src
+│   ├── /application
+│   │   ├── /services
+│   │   │   └── OrderService.ts
+│   │   └── /use-cases
+│   │       └── useOrder.ts
+│   ├── /domain
+│   │   ├── /models
+│   │   │   ├── Order.ts
+│   │   └── /repositories
+│   │       └── OrderRepository.ts
+│   ├── /infrastructure
+│   │   ├── /api
+│   │       └── OrderApi.ts
+│   ├── /interfaces
+│   │   ├── /components
+│   │   │   └── OrderList.tsx
+│   │   └── /pages
+│   │       └── OrderPage.tsx
+│   └── /styles
+│       └── globals.css
+├── .gitignore
+├── next.config.js
+├── package.json
+└── tsconfig.json
